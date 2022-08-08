@@ -63,6 +63,7 @@
 	   #:bs-form-file
 	   #:bs-form-email
 	   #:bs-form-checkbox
+	   #:bs-progressbar
 	   #:*bootstrap-css-url*
 	   #:*jquery-url*
 	   #:*bootstrap-js-url*

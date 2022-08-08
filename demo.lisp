@@ -192,7 +192,7 @@
 	      (:tr (:td "1") (:td "Mark") (:td "Otto") (:td "@mdo"))))))
 
 (hunchentoot:define-easy-handler (carousel :uri "/carousel") ()
-  (app-page (:title "Carousel")
+
     (:h1 "Carouse page")
     (bs-col-md (:grid 8)
 	(bs-carousel (:id "carousel-example-generic")
@@ -260,12 +260,44 @@
                                                             (:li :role "separator" :class "divider")
                                                             (:li (:a :href "#" "Separated link")))))
 
+
+(hunchentoot:define-easy-handler (progressbar :uri "/progressbar") ()
+    (app-page (:title "cl-bootstrap progressbar")
+	(:h1 "Progressbar")
+	(bs-progressbar (:type "default" :aria-valuenow "60"
+			 :aria-valuemin "0" :aria-valuemax "100" :fill "60%")
+	    "60% complete")
+	:br
+	(bs-progressbar-label (:type "default" :aria-valuenow "60"
+			       :aria-valuemin "0" :aria-valuemax "100" :fill "60%")
+	    "60% complete")
+	:br
+	(bs-progressbar (:type "success" :aria-valuenow "40" :striped t
+			 :aria-valuemin "0" :aria-valuemax "100" :fill "40%"))
+	:br
+	(bs-progressbar (:type "info" :aria-valuenow "20" :striped t
+			 :aria-valuemin "0" :aria-valuemax "100" :fill "20%"))
+	:br
+	(bs-progressbar (:type "warning" :aria-valuenow "60" :striped t
+			 :aria-valuemin "0" :aria-valuemax "100" :fill "60%"))
+	:br
+	(bs-progressbar (:type "danger" :aria-valuenow "80" :striped t
+			 :aria-valuemin "0" :aria-valuemax "100" :fill "80%"))))
+
 (defun start-server()
     (hunchentoot:start (make-instance 'hunchentoot:easy-acceptor :port 3000)))
 
-(push (hunchentoot:create-folder-dispatcher-and-handler "/css/" "public/css/") hunchentoot:*dispatch-table*)
-(push (hunchentoot:create-folder-dispatcher-and-handler "/js/" "public/js/") hunchentoot:*dispatch-table*)
-(push (hunchentoot:create-folder-dispatcher-and-handler "/fonts/" "public/fonts/") hunchentoot:*dispatch-table*)
+(push
+ (hunchentoot:create-folder-dispatcher-and-handler "/css/" "public/css/")
+ hunchentoot:*dispatch-table*)
+
+(push
+ (hunchentoot:create-folder-dispatcher-and-handler "/js/" "public/js/")
+ hunchentoot:*dispatch-table*)
+
+(push
+ (hunchentoot:create-folder-dispatcher-and-handler "/fonts/" "public/fonts/")
+ hunchentoot:*dispatch-table*)
 
 
 (start-server)
