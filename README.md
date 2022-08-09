@@ -155,6 +155,17 @@ You can see the demo at [http://localhost:3000](http://localhost:3000).
 	(:button :type "submit" :class "btn btn-default" "Submit"))
 ```
 
+### Progressbar
+```lisp
+(bs-progressbar (:type "default" :aria-valuenow "60"
+                 :aria-valuemin "0" :aria-valuemax "100" :fill "60%")
+	"60% complete")
+
+(bs-progressbar-label (:type "default" :aria-valuenow "60"
+	                   :aria-valuemin "0" :aria-valuemax "100" :fill "60%")
+	"60% complete")
+
+```
 
 
 ## License
